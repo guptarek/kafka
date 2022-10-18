@@ -1,0 +1,129 @@
+{
+  "$id": "http://example.com/myURI.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "Sample schema to help you get started.",
+  "properties": {
+    "Case": {
+      "properties": {
+        "CASE_AUTH_TYPE": {
+          "type": "string"
+        },
+        "CASE_CODE": {
+          "type": "string"
+        },
+        "CASE_END_DATE": {
+          "type": "string"
+        },
+        "CASE_NUMBER": {
+          "type": "string"
+        },
+        "CASE_START_DATE": {
+          "type": "string"
+        },
+        "CASE_STATUS": {
+          "type": "string"
+        },
+        "CASE_TYPE": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Patient": {
+      "properties": {
+        "CASE_NUMBER": {
+          "type": "string"
+        },
+        "PAT_DOB": {
+          "type": "string"
+        },
+        "PAT_FIRST_NAME": {
+          "type": "string"
+        },
+        "PAT_ID": {
+          "type": "string"
+        },
+        "PAT_LAST_NAME": {
+          "type": "string"
+        },
+        "PAT_MIDDLE_NAME": {
+          "type": "string"
+        },
+        "PAT_PLANE_TYPE": {
+          "type": "string"
+        },
+        "PAT_PLAN_NAME": {
+          "type": "string"
+        },
+        "PAT_SEX": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Service": {
+      "properties": {
+        "CASE_NUMBER": {
+          "type": "string"
+        },
+        "SVC_CODE": {
+          "type": "string"
+        },
+        "SVC_FAC_ID": {
+          "type": "string"
+        },
+        "SVC_FAC_NAME": {
+          "type": "string"
+        },
+        "SVC_ID": {
+          "type": "string"
+        },
+        "SVC_PHY_ID": {
+          "type": "string"
+        },
+        "SVC_PHY_NAME": {
+          "type": "string"
+        },
+        "SVC_TYPE": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Subscriber": {
+      "properties": {
+        "CASE_NUMBER": {
+          "type": "string"
+        },
+        "MEM_ADD_1": {
+          "type": "string"
+        },
+        "MEM_ADD_2": {
+          "type": "string"
+        },
+        "MEM_CITY": {
+          "type": "string"
+        },
+        "MEM_FIRST_NAME": {
+          "type": "string"
+        },
+        "MEM_ID": {
+          "type": "string"
+        },
+        "MEM_LAST_NAME": {
+          "type": "string"
+        },
+        "MEM_MIDDLE_NAME": {
+          "type": "string"
+        },
+        "MEM_PIN": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "AuthTopic",
+  "type": "object"
+}
