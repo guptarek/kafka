@@ -27,11 +27,6 @@ Replication:
         follower partitions.
     3. Follower-> there will be one leader and N-1 followers if N is the total number of partitions.
     
-Endpoints:
-SASL_SSL://pkc-6ojv2.us-west4.gcp.confluent.cloud:9092
-RestEndpoint:  https://pkc-6ojv2.us-west4.gcp.confluent.cloud:443  
-
-
 
 Commands LocalSystem:
   ~ confluent local services start (will start at localhost:9021)
@@ -39,10 +34,6 @@ Commands LocalSystem:
   ~ kafka-console-consumer --topic Test_topic_0 --bootstrap-server localhost:9092 --from-beginning
 
 org.springframework.kafka.support.serializer.JsonSerializer -> to serialize json data without kafka json schema
-
-consume JSON from AUTH-TOPIC
-and Split into different json by ksql
-and Split into different json by kstream
 
   
   
