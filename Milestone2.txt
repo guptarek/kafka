@@ -1,0 +1,57 @@
+// Created Kafka Stream in KSQLDB from 'Auth-Topic' Topic
+CREATE stream health_stream
+(
+      Cased STRUCT<
+        CASE_AUTH_TYPE VARCHAR,
+        CASE_CODE VARCHAR,
+        CASE_END_DATE VARCHAR,
+        CASE_NUMBER VARCHAR,
+        CASE_START_DATE VARCHAR,
+        CASE_STATUS VARCHAR,
+        CASE_TYPE VARCHAR                                              
+      >,
+      Patient STRUCT<
+        CASE_NUMBER VARCHAR,
+        PAT_DOB VARCHAR,
+        PAT_FIRST_NAME VARCHAR,
+        PAT_ID VARCHAR,
+        PAT_LAST_NAME VARCHAR,
+        PAT_MIDDLE_NAME VARCHAR,
+        PAT_PLANE_TYPE VARCHAR,
+        PAT_PLAN_NAME VARCHAR,
+        PAT_SEX VARCHAR
+      >,
+      Service STRUCT<
+        CASE_NUMBER VARCHAR,
+        SVC_CODE VARCHAR,
+        SVC_FAC_ID VARCHAR,
+        SVC_FAC_NAME VARCHAR,
+        SVC_ID VARCHAR,
+        SVC_PHY_ID VARCHAR,
+        SVC_PHY_NAME VARCHAR,
+        SVC_TYPE VARCHAR
+      >,
+      Subscriber STRUCT<
+        CASE_NUMBER VARCHAR,
+        MEM_ADD_1 VARCHAR,
+        MEM_ADD_2 VARCHAR,
+        MEM_CITY VARCHAR,
+        MEM_FIRST_NAME VARCHAR,
+        MEM_ID VARCHAR,
+        MEM_LAST_NAME VARCHAR,
+        MEM_MIDDLE_NAME VARCHAR,
+        MEM_PIN VARCHAR
+      >                    
+)
+WITH (KAFKA_TOPIC = 'Auth-Topic',
+      VALUE_FORMAT='JSON'
+     );
+
+# To Create different streams of All the sub-Topic of "AUTH-TOPIC" Topic From Above Health Stream
+Create Stream SERVICE As Select SERVICE from Health_Stream ;
+Create Stream  SUBSCRIBER  As Select  SUBSCRIBER  from Health_Stream ;
+Create Stream  PATIENT  As Select  PATIENT  from Health_Stream ;
+Create Stream  CASED  As Select  CASED  from Health_Stream ;    
+     
+# To set offset to featch values from starting.
+auto.offset.reset = Earliest
