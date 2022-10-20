@@ -1,0 +1,48 @@
+Kafka - events - logs 
+
+To set bin as a Path:
+  export PATH=/Users/rekgupta/bin:$PATH
+  
+Added these to /.zshrc (from "nano ~/.zshrc")
+  export CONFLUENT_HOME=/Users/rekgupta/confluent-7.2.2
+  export PATH=$PATH:$CONFLUENT_HOME/bin
+
+Partitions: 
+  Subset of Logs(Topic)
+
+Commands confluent cloud:
+  ~ confluent kafka topic produce topic_2 --parse-key
+  ~ confluent kafka topic consume -b topic_2  
+  ~ confluent kafka topic create --partitions <ex. 1 , number of partitions> <topic_name>
+  ~ confluent kafka topic describe <topic_name>
+  ~ confluent kafka cluster describe ##(to describe the cluster endpoints)
+
+Broker:
+  Small underline computers which do all kafka processes
+  
+Replication:
+  Kafka replication have 2 parts:
+    1. Leader -> which does all the read and write operations.
+    2. After each read and write operations Kafka replication automatically replicate things between leader partition and 
+        follower partitions.
+    3. Follower-> there will be one leader and N-1 followers if N is the total number of partitions.
+    
+Endpoints:
+SASL_SSL://pkc-6ojv2.us-west4.gcp.confluent.cloud:9092
+RestEndpoint:  https://pkc-6ojv2.us-west4.gcp.confluent.cloud:443  
+
+
+
+Commands LocalSystem:
+  ~ confluent local services start (will start at localhost:9021)
+  ~ kafka-console-producer --topic Test_topic_0 --broker-list localhost:9092    
+  ~ kafka-console-consumer --topic Test_topic_0 --bootstrap-server localhost:9092 --from-beginning
+
+org.springframework.kafka.support.serializer.JsonSerializer -> to serialize json data without kafka json schema
+
+consume JSON from AUTH-TOPIC
+and Split into different json by ksql
+and Split into different json by kstream
+
+  
+  
