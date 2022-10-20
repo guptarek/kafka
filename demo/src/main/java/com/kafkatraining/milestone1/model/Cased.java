@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "CASE_TYPE"
 })
 @Generated("jsonschema2pojo")
-public class Case {
+public class Cased {
 
     @JsonProperty("CASE_AUTH_TYPE")
     private String caseAuthType;
@@ -124,7 +124,7 @@ public class Case {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Case.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(Cased.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("caseAuthType");
         sb.append('=');
         sb.append(((this.caseAuthType == null)?"<null>":this.caseAuthType));
@@ -184,10 +184,10 @@ public class Case {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Case) == false) {
+        if ((other instanceof Cased) == false) {
             return false;
         }
-        Case rhs = ((Case) other);
+        Cased rhs = ((Cased) other);
         return (((((((((this.caseCode == rhs.caseCode)||((this.caseCode!= null)&&this.caseCode.equals(rhs.caseCode)))&&((this.caseStartDate == rhs.caseStartDate)||((this.caseStartDate!= null)&&this.caseStartDate.equals(rhs.caseStartDate))))&&((this.caseAuthType == rhs.caseAuthType)||((this.caseAuthType!= null)&&this.caseAuthType.equals(rhs.caseAuthType))))&&((this.caseNumber == rhs.caseNumber)||((this.caseNumber!= null)&&this.caseNumber.equals(rhs.caseNumber))))&&((this.caseStatus == rhs.caseStatus)||((this.caseStatus!= null)&&this.caseStatus.equals(rhs.caseStatus))))&&((this.caseEndDate == rhs.caseEndDate)||((this.caseEndDate!= null)&&this.caseEndDate.equals(rhs.caseEndDate))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.caseType == rhs.caseType)||((this.caseType!= null)&&this.caseType.equals(rhs.caseType))));
     }
 

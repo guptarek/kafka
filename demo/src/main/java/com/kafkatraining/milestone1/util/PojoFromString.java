@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PojoFromString {
-    public Case getCaseFromString(String line) {
-        Case casePojo = new Case();
+    public Cased getCaseFromString(String line) {
+        Cased casePojo = new Cased();
         casePojo.setCaseNumber(line.substring(3, 19).trim());
         casePojo.setCaseType(line.substring(19, 35).trim());
         casePojo.setCaseCode(line.substring(35, 51).trim());
@@ -60,7 +60,7 @@ public class PojoFromString {
 
     public AuthTopicValue cleanAuthTopic(AuthTopicValue authTopic) {
         authTopic.setService(null);
-        authTopic.setCase(null);
+        authTopic.setCased(null);
         authTopic.setSubscriber(null);
         authTopic.setPatient(null);
         return authTopic;

@@ -3,7 +3,6 @@ package com.kafkatraining.milestone1.service;
 import com.kafkatraining.milestone1.model.AuthTopicKey;
 import com.kafkatraining.milestone1.model.AuthTopicValue;
 import lombok.RequiredArgsConstructor;
-import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;

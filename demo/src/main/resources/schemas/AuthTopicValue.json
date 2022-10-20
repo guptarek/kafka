@@ -4,7 +4,7 @@
   "additionalProperties": false,
   "description": "Sample schema to help you get started.",
   "properties": {
-    "Case": {
+    "Cased": {
       "properties": {
         "CASE_AUTH_TYPE": {
           "type": "string"

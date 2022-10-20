@@ -41,7 +41,7 @@ public class KafkaStreamService {
         Serde<AuthTopicKey> keySerde = Serdes.serdeFrom(serializerKey, deserializerKey);
         Serde<AuthTopicValue> valueSerde = Serdes.serdeFrom(serializerValue, deserializerValue);
 
-        Serde<Case> caseValueSerd = Serdes.serdeFrom(new JsonSerializer<>(), new JsonDeserializer<>(Case.class));
+        Serde<Cased> caseValueSerd = Serdes.serdeFrom(new JsonSerializer<>(), new JsonDeserializer<>(Cased.class));
         Serde<Patient> patientValueSerd = Serdes.serdeFrom(new JsonSerializer<>(), new JsonDeserializer<>(Patient.class));
         Serde<Subscriber> subscriberValueSerd = Serdes.serdeFrom(new JsonSerializer<>(), new JsonDeserializer<>(Subscriber.class));
         Serde<Service> serviceValueSerd = Serdes.serdeFrom(new JsonSerializer<>(), new JsonDeserializer<>(Service.class));
@@ -49,7 +49,7 @@ public class KafkaStreamService {
         KStream<AuthTopicValue, AuthTopicValue> kStream = streamsBuilder.stream(topicName, Consumed.with(valueSerde, valueSerde));
 
         kStream.peek((key, value) -> System.out.println(value.toString()))
-                .map((key, value) -> (new KeyValue<String, Case>("Case", value.getCase())))
+                .map((key, value) -> (new KeyValue<String, Cased>("Case", value.getCased())))
                 .peek((key, value) -> System.out.println("Key: " + key + " value: " + value.toString()))
                 .to(topicCase, Produced.with(Serdes.String(), caseValueSerd));
 

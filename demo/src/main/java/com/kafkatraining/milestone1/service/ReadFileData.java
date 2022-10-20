@@ -41,7 +41,7 @@ public class ReadFileData {
                         }
 
                         case "CAS": {
-                            authTopic.setCase(pojoFromString.getCaseFromString(line));
+                            authTopic.setCased(pojoFromString.getCaseFromString(line));
                             break;
                         }
 
@@ -54,7 +54,7 @@ public class ReadFileData {
                             System.out.println("No value Matched");
                             break;
                     }
-                    if (authTopic.getCase() != null && authTopic.getPatient() != null && authTopic.getSubscriber() != null && authTopic.getService() != null) {
+                    if (authTopic.getCased() != null && authTopic.getPatient() != null && authTopic.getSubscriber() != null && authTopic.getService() != null) {
                         AuthTopicKey key = new AuthTopicKey();
                         key.setDateString(fileName);
                         producerService.send(key, authTopic);
