@@ -1,0 +1,81 @@
+CREATE TABLE patient_table WITH (KEY_FORMAT='JSON') AS
+    SELECT PATIENT->case_number,
+    PATIENT->pat_id,
+    PATIENT->pat_first_name,
+    PATIENT->pat_middle_name,
+    PATIENT->pat_last_name,
+    PATIENT->pat_sex,
+    PATIENT->pat_dob,
+    PATIENT->pat_plane_type,
+    PATIENT->pat_plan_name,
+    COUNT(PATIENT->pat_id) AS count
+    FROM PATIENT
+    GROUP BY PATIENT->case_number,
+    PATIENT->pat_id,PATIENT->pat_first_name,
+    PATIENT->pat_middle_name,PATIENT->pat_last_name,
+    PATIENT->pat_sex,PATIENT->pat_dob,PATIENT->pat_plane_type,PATIENT->pat_plan_name
+EMIT CHANGES;
+
+ --   ///////
+
+CREATE TABLE case_table WITH (KEY_FORMAT='JSON') AS
+    SELECT CASED->case_number,
+    CASED->case_code,
+    CASED->case_type,
+    CASED->case_start_date,
+    CASED->case_end_date,
+    CASED->case_auth_type,
+    CASED->case_status,
+    COUNT(CASED->case_code) AS count
+     FROM  CASED
+     GROUP BY CASED->case_number,
+     CASED->case_code,CASED->case_type,
+     CASED->case_start_date,CASED->case_end_date,
+     CASED->case_auth_type,CASED->case_status
+     EMIT CHANGES;
+
+ --  /////
+
+ CREATE TABLE subscriber_table WITH (KEY_FORMAT='JSON') AS
+    SELECT SUBSCRIBER->case_number,
+    SUBSCRIBER->mem_id,
+    SUBSCRIBER->mem_first_name,
+    SUBSCRIBER->mem_middle_name,
+    SUBSCRIBER->mem_last_name,
+    SUBSCRIBER->mem_add_1,
+    SUBSCRIBER->mem_add_2,
+    SUBSCRIBER->mem_city,
+    SUBSCRIBER->mem_pin,
+    COUNT(SUBSCRIBER->mem_id) AS count
+     FROM  SUBSCRIBER
+     GROUP BY SUBSCRIBER->case_number,
+     SUBSCRIBER->mem_id,
+     SUBSCRIBER->mem_first_name,
+     SUBSCRIBER->mem_middle_name,
+     SUBSCRIBER->mem_last_name,
+     SUBSCRIBER->mem_add_1,
+     SUBSCRIBER->mem_add_2,
+     SUBSCRIBER->mem_city,
+     SUBSCRIBER->mem_pin
+     EMIT CHANGES;
+
+--  ///////
+
+CREATE TABLE service_table WITH (KEY_FORMAT='JSON') AS
+    SELECT SERVICE->case_number,
+    SERVICE->svc_id,
+    SERVICE->svc_type,
+    SERVICE->svc_code,
+    SERVICE->svc_fac_id,
+    SERVICE->svc_fac_name,
+    SERVICE->svc_phy_id,
+    SERVICE->svc_phy_name,
+    COUNT(SERVICE->svc_id) AS count
+    FROM   SERVICE
+    GROUP BY SERVICE->case_number,
+    SERVICE->svc_id,SERVICE->svc_type,
+    SERVICE->svc_code,SERVICE->svc_fac_id,
+    SERVICE->svc_fac_name,SERVICE->svc_phy_id,
+    SERVICE->svc_phy_name
+    EMIT CHANGES;
+
